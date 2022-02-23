@@ -9,9 +9,9 @@ import utils.Criteria;
 
 public interface ProductService {
 
-	List<ProductVO> getNewProductList();
-	
-	List<ProductVO> getBestProductList();
+//	List<ProductVO> getNewProductList();
+//	
+//	List<ProductVO> getBestProductList();
 	
 	ProductVO getProduct(ProductVO vo);
 	

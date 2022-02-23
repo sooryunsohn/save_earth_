@@ -18,17 +18,17 @@ public class ProductServiceImpl implements ProductService {
 	@Autowired
 	private ProductDAO pDao;
 	
-	@Override
-	public List<ProductVO> getNewProductList() {
-		
-		return pDao.getNewProductList();
-	}
-
-	@Override
-	public List<ProductVO> getBestProductList() {
-		
-		return pDao.getBestProductList();
-	}
+//	@Override
+//	public List<ProductVO> getNewProductList() {
+//		
+//		return pDao.getNewProductList();
+//	}
+//
+//	@Override
+//	public List<ProductVO> getBestProductList() {
+//		
+//		return pDao.getBestProductList();
+//	}
 
 	@Override
 	public ProductVO getProduct(ProductVO vo) {
@@ -39,7 +39,7 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public List<ProductVO> getProductListByKind(ProductVO vo) {
 		
-		return pDao.getBestProductList();
+		return pDao.getProductListByKind(vo);
 	}
 
 	@Override

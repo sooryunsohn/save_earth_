@@ -20,4 +20,6 @@ public interface OrderService {
 	
 	public void updateOrderResult(int odseq);
 
+	List<OrderVO> selectOrderByResult(OrderVO vo);
+
 }
