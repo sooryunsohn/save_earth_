@@ -78,4 +78,10 @@ public class ProductServiceImpl implements ProductService {
 		return pDao.getProductSales();
 	}
 
+	@Override
+	public void deleteProduct(ProductVO vo) {
+
+		pDao.deleteProduct(vo);
+	}
+
 }

@@ -1,5 +1,7 @@
 package com.green.view;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.green.biz.admin.AdminService;
 import com.green.biz.dto.MemberVO;
@@ -112,11 +115,156 @@ public class AdminController {
 	@GetMapping(value="/category")
 	public String productKindList(ProductVO vo, Model model) {
 		List<ProductVO> listProduct = productService.getProductListByKind(vo);
-		model.addAttribute("productKindList", listProduct);
+		model.addAttribute("adminproductKindList", listProduct);
 		
 		return "admin/product/productKind";
 	}
+
+	// 상품 등록 페이지 표시
+	@PostMapping(value="/admin_product_write_form")
+	public String adminProductWriteView(Model model) {
+		String kindList[] = {"LIVING", "BATH", "KITCHEN", "KIT", "ETC"};
+		
+		model.addAttribute("kindList", kindList);
+		return "admin/product/productWrite";
+	}
 	
+	// 상품 등록 처리
+	@PostMapping(value="/admin_product_write")
+	public String adminProductWrite(@RequestParam(value="product_image") MultipartFile uploadFile, 
+																ProductVO vo, HttpSession session) {
+		WorkerVO adminUser = (WorkerVO)session.getAttribute("adminUser");
+			
+		if (adminUser == null) {
+			return "admin/main";
+		} else {
+			String fileName = "";
+			if (!uploadFile.isEmpty()) {			// 이미지 파일이 있는 경우.
+				fileName = uploadFile.getOriginalFilename();
+				
+				// vo 객체에 이미지 파일 저장.
+				vo.setImage(fileName);
+				
+				// 이미지 파일의 실제 저장경로 구하기.
+				String image_path = session.getServletContext().getRealPath("WEB-INF/resources/product_images/");
+				System.out.println("이미지 경로: " + image_path);
+			
+				try {
+					// 이미지 파일을 위의 경로로 이동시킨다...
+					File dest = new File(image_path + fileName);
+					uploadFile.transferTo(dest);
+				} catch (IllegalStateException | IOException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		productService.insertProduct(vo);
+		
+		return "redirect:admin_product_list";
+	}
+	
+	// 상품 상세보기
+	@GetMapping(value="/admin_product_detail")
+	public String adminProductDetail(ProductVO vo, Model model) {
+		String kindList[] = {"", "LIVING", "BATH", "KITCHEN", "KIT", "ETC"};
+		
+		ProductVO product = productService.getProduct(vo);
+		
+		model.addAttribute("productVO", product);
+		
+		int index = Integer.parseInt(product.getKind());
+		model.addAttribute("kind", kindList[index]);
+		
+		return "admin/product/productDetail";
+	}
+	
+	// 상품 수정 창열기
+	@PostMapping(value="/admin_product_update_form")
+	public String adminProductUpdateView(ProductVO vo, Model model) {
+		String kindList[] = {"LIVING", "BATH", "KITCHEN", "KIT", "ETC"};
+		
+		ProductVO product = productService.getProduct(vo);
+		
+		model.addAttribute("productVO", product);
+		model.addAttribute("kindList", kindList);
+		
+		return "admin/product/productUpdate";
+	}
+	
+	
+	//상품 수정 처리
+	@PostMapping(value="/admin_product_update")
+	public String adminProductUpdate(@RequestParam(value="product_image") MultipartFile uploadFile, 
+																	@RequestParam(value="nonmakeImg") String origImage,
+																	ProductVO vo, HttpSession session) { 
+		WorkerVO adminUser = (WorkerVO)session.getAttribute("adminUser");
+		
+		if (adminUser == null) {
+			return "admin/main";
+		} else {
+			String fileName = "";
+			
+			// 이미지 파일을 수정 시 설정.
+			if (!uploadFile.isEmpty()) {			// 이미지 파일이 있는 경우.
+				fileName = uploadFile.getOriginalFilename();
+				
+				// vo 객체에 이미지 파일 저장.
+				vo.setImage(fileName);
+				
+				// 이미지 파일의 실제 저장경로 구하기.
+				String image_path = session.getServletContext().getRealPath("WEB-INF/resources/product_images/");
+				System.out.println("이미지 경로: " + image_path);
+			
+				try {
+					// 이미지 파일을 위의 경로로 이동시킨다...
+					File dest = new File(image_path + fileName);
+					uploadFile.transferTo(dest);
+				} catch (IllegalStateException | IOException e) {
+					e.printStackTrace();
+				}
+			} else {
+				// 기존 이미지로 image 필드 설정..
+				vo.setImage(origImage);
+			}
+			if (vo.getUseyn() == null) {
+				vo.setUseyn("n");
+			}
+			if (vo.getBestyn() == null) {
+				vo.setBestyn("n");
+			}
+			productService.updateProduct(vo);
+			
+			return "redirect:admin_product_list";
+		}
+	}
+
+	
+	// 상품 삭제 폼 열기
+	@GetMapping(value="/admin_product_delete")
+	public String adminProductDeleteFrom(ProductVO vo, HttpSession session) {
+		WorkerVO adminUser = (WorkerVO)session.getAttribute("adminUser");
+		
+		if (adminUser == null) {
+			return "admin/main";
+		} else {
+			
+			return "redirect:admin_product_list";
+		}
+	}
+	
+	// 상품 삭제 처리
+	@RequestMapping(value="/admin_product_delete")
+	public String adminProductDelete(ProductVO vo, HttpSession session) {
+		WorkerVO adminUser = (WorkerVO)session.getAttribute("adminUser");
+		
+		if (adminUser == null) {
+			return "admin/main";
+		} else {
+			productService.deleteProduct(vo);
+			
+			return "redirect:admin_product_list";
+		}
+	}
 	
 	
 	

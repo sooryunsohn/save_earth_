@@ -92,16 +92,21 @@ function go_mod_save(pseq) {
 	 } else if ($price2.val()=="") {
 	      alert("판매가를 입력하세요!");
 	      $price2.focus();
+	 } else if ($price3.val()=="") {
+		 $price2.focus();
 	 } else if ($("#content").val()=="") {
 	      alert("상품상세를 입력하세요!");
 	      $("#content").focus();
 	 } else {
-		 // 베스트 상품 체크 수정
+		 /*
+		  // 베스트 상품 체크 수정
 		 if ($("#bestyn").is(":checked")) {
 			 $("#bestyn").val("y");
 		 } else {
 			 $("#bestyn").val("n");
-		 }
+		 } 
+		 */
+		 
 		 // 신상품 체크 수정 
 		 if ($("#useyn").is(":checked")) {
 			 $("#useyn").val("y");
@@ -126,4 +131,8 @@ function go_list() {
 	$("#detail_form").attr("action", "admin_product_list").submit();	
 }
 
-
+//
+//// 상품 삭제
+//function clickDel(pseq) {
+//	$("#frm").attr("action", "admin_product_delete?pseq="+pseq).submit();
+//}

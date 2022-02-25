@@ -53,8 +53,8 @@
 	
 	<!-- 상품 추가 -->
 	<insert id="insertProduct" >
-		INSERT INTO product(pseq,kind,name,price1,price2,price3,content,image)
-		VALUES(product_seq.NEXTVAL,#{kind},#{name},#{price1},#{price2},#{price3},#{content},#{image})
+		INSERT INTO product(pseq, name, kind ,price1,price2,price3, image, content)
+		VALUES(product_seq.NEXTVAL,#{name}, #{kind}, #{price1},#{price2},#{price3},#{image}, #{content})
 	</insert>
 	
 	<!-- 상품 수정 -->
@@ -63,8 +63,12 @@
 			SET kind=#{kind},useyn=#{useyn},name=#{name},price1=#{price1},price2=#{price2},
 				price3=#{price3},content=#{content},image=#{image},bestyn=#{bestyn} 
 		 WHERE pseq=#{pseq}
-				
 	</update>
+	
+	<!-- 상품 삭제 -->
+	<delete id="deleteProduct">
+		DELETE product WHERE pseq=#{pseq}
+	</delete>
 	
 	<!-- 제품 판매실적을 위한 데이터 매핑 -->
 	<resultMap type="com.green.biz.dto.SalesQuantity" id="salesMap">

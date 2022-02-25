@@ -12,7 +12,7 @@ import com.green.biz.dto.SalesQuantity;
 
 import utils.Criteria;
 
-@Repository		//������ ��ü�� ���
+@Repository		// 스프링 객체로 등록. DB 연결할때.
 public class ProductDAO {
 	
 	@Autowired
@@ -37,18 +37,21 @@ public class ProductDAO {
 		
 		return mybatis.selectList("mappings.product-mapping.getProductListByKind",vo);
 	}
-	//��ü ��ǰ�� ���� ����
+	
+	
+	// 어드민 기능
+	// 전체 상품 개수 조회
 	public int countProductList(String name) {
 		
 		return mybatis.selectOne("mappings.product-mapping.countProductList",name);
 	}
 	
-	//��ǰ ��� ��ȸ
+	// 상품 목록 조회
 	public List<ProductVO> listProduct(String name){
 		
 		return mybatis.selectList("mappings.product-mapping.listProduct",name);
 	}
-	//�������� ��ǰ��� ��ȸ
+	// 페이지별 상품 목록 조회
 	public List<ProductVO> getListWithPaging(Criteria criteria,String name) {
 		HashMap<String,Object> map = new HashMap<>();
 		map.put("criteria", criteria);
@@ -57,19 +60,25 @@ public class ProductDAO {
 		return mybatis.selectList("mappings.product-mapping.listWithPaging",map);
 	}
 	
-	//��ǰ �߰�
+	// 상품 추가
 	public void insertProduct(ProductVO vo) {
 		
 		mybatis.insert("mappings.product-mapping.insertProduct",vo);
 	}
 	
-	//��ǰ���� ����
+	// 상품 수정
 	public void updateProduct(ProductVO vo) {
 		
 		mybatis.update("mappings.product-mapping.updateProduct",vo);
 	}
 	
-	//��ǰ�� �Ǹ� ���� ��ȸ
+	// 상품 삭제
+	public void deleteProduct(ProductVO vo) {
+		
+		mybatis.delete("mappings.product-mapping.deleteProduct", vo);
+	}
+	
+	// 상품별 판매 실적 조회
 	public List<SalesQuantity>getProductSales(){
 		
 		return mybatis.selectList("mappings.product-mapping.getProductSales");

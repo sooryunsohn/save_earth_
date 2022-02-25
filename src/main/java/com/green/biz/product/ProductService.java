@@ -28,4 +28,6 @@ public interface ProductService {
 	public List<ProductVO> getListWithPaging(Criteria criteria,String name);
 	
 	public List<SalesQuantity>getProductSales();
+	
+	public void deleteProduct(ProductVO vo);
 }

@@ -49,7 +49,7 @@
 							<c:forEach items="${productList }" var="productVO">
 								<tr>
 									<td>${productVO.pseq}</td>
-									<td><a href="product_detail?pseq=${productVO.pseq }">${productVO.name }</a></td>
+									<td><a href="admin_product_detail?pseq=${productVO.pseq }">${productVO.name }</a></td>
 									<td><fmt:formatNumber value="${productVO.price1 }" /></td>
 									<td><fmt:formatNumber value="${productVO.price2 }" /></td>
 									<td><fmt:formatDate value="${productVO.regdate }" /></td>
