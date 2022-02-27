@@ -29,7 +29,7 @@
     <footer class="footer spad">
         <div class="container">
             <div class="row">
-                <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="col-lg-6">
                     <div class="footer__about">
                         <div class="footer__about__logo">
                             <a href="index"><img src="img/logo.png" alt=""></a>
@@ -44,7 +44,7 @@
                         </ul>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6 col-sm-6 offset-lg-1">
+                <div class="col-6">
                     <div class="footer__widget">
                         <h6>Useful Links</h6>
                         <ul>
@@ -65,7 +65,7 @@
                         </ul>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-12">
+             <!--    <div class="col-lg-4 col-md-12">
                     <div class="footer__widget">
                         <h6>Join Our Newsletter Now</h6>
                         <p>Get E-mail updates about our latest shop and special offers.</p>
@@ -80,7 +80,7 @@
                             <a href="#"><i class="fa fa-pinterest"></i></a>
                         </div>
                     </div>
-                </div>
+                </div>-->
             </div>
             <div class="row">
                 <div class="col-lg-12">

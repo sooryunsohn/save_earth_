@@ -16,6 +16,8 @@ public interface QnaService {
 	
 	public void updateQna(QnaVO vo);
 	
+	
+	
 	List<QnaVO> selectQnaRepList(QnaVO vo);
 }
 

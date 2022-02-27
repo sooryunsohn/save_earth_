@@ -41,6 +41,10 @@ public class QnaServiceImpl implements QnaService {
 		qnaDao.updateQna(vo);
 	}
 
+	
+	
+	
+	
 	@Override
 	public List<QnaVO> selectQnaRepList(QnaVO vo) {
 	

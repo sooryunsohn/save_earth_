@@ -22,11 +22,11 @@ public class MemberDAO {
 	}
 	
 	//회원 존재여부 확인
-		/*
-		 * 리턴값:
-		 * 		회원이 존재하면: 1
-		 * 		회원이 존재하지 않으면: -1
-		 */
+	/*
+	 * 리턴값:
+	 * 		회원이 존재하면: 1
+	 * 		회원이 존재하지 않으면: -1
+	 */
 	public int confirmID(String id) {
 		
 		String pwd = mybatis.selectOne("mappings.member-mapping.confirmID",id);
@@ -58,18 +58,17 @@ public class MemberDAO {
 		return result;
 	}
 	
-	
-	// 회원 등록
+	//회원 등록
 	public void insertMember(MemberVO vo) {
 		
 		mybatis.insert("mappings.member-mapping.insertMember",vo);
 	}
 	
-//	//동이름으로  주소 찾기
-//	public List<AddressVO> selectAddressByDong(String dong){
+//	//똥이름으로  주소 찾기
+//	public List<AddressVO> selectRoadaddrByDong(String dong){
 //		return mybatis.selectList("mappings.member-mapping.selectAddressByDong",dong);
 //	}
-//	
+	
 	//회원 목록 조회
 	public List<MemberVO> listMember(String name){
 		

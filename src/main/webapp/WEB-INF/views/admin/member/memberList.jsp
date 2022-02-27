@@ -11,22 +11,8 @@
 </script>
 
 	<div class="container">
-		<div class="row">
-			<div class="col-3" style="margin-top: 54px;">
-<!-- 				<h4 style="margin: 10px 10px 10px 30px;">Category</h4>
-				<ul class="list-group list-group-flush">
-					<li class="list-group-item"><a href="category?kind=''">ALL</a></li>
-					<li class="list-group-item"><a href="category?kind=1">LIVING</a></li>
-					<li class="list-group-item"><a href="category?kind=2">BATHROOM</a></li>
-					<li class="list-group-item"><a href="category?kind=3">KITCHEN</a></li>
-					<li class="list-group-item"><a href="category?kind=4">KIT</a></li>
-					<li class="list-group-item"><a href="category?kind=5">ETC</a></li>
-				</ul>
- -->				
-			</div>
-
-
-			<div class="col-9">
+		<div class="row justify-content-md-center">
+			<div class="col-8">
 				<h3 style="margin: 10px;">회원 리스트</h3>
 				<form name="frm" id="prod_form" method="post">	
 					<div class="input-group" style="margin-bottom: 10px;">

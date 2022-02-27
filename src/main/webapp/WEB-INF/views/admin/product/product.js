@@ -98,14 +98,13 @@ function go_mod_save(pseq) {
 	      alert("상품상세를 입력하세요!");
 	      $("#content").focus();
 	 } else {
-		 /*
 		  // 베스트 상품 체크 수정
 		 if ($("#bestyn").is(":checked")) {
 			 $("#bestyn").val("y");
 		 } else {
 			 $("#bestyn").val("n");
 		 } 
-		 */
+		 
 		 
 		 // 신상품 체크 수정 
 		 if ($("#useyn").is(":checked")) {
@@ -117,6 +116,11 @@ function go_mod_save(pseq) {
 		 $("#update_form").attr("encoding", "multipart/form-data");
 		 $("#update_form").attr("action", "admin_product_update?pseq=" +pseq).submit();
 	 }
+}
+
+//상품 등록 창에서 취소하고 다시 목록으로 돌아가는거 
+function go_write_list() {
+	$("#write_form").attr("action", "admin_product_list").submit();
 }
 
 

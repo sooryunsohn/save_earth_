@@ -58,20 +58,34 @@ div .input-group {
 					</div>
 					
 					<div class="input-group">
-					<div>
-						<span class="input-group-text" style="width: 75px; margin-right: 25px; padding-left: 20px;"> 사용 </span>
-						</div><br>
-						<div>
-						<c:choose>
-        					<c:when test='${productVO.useyn=="y"}'>
-          						<input type="checkbox" class="form-check-input" name="useyn" id="useyn" value="y" checked="checked" style="vertical-align: middle;">
-        					</c:when>
-      						<c:otherwise>
-      							<input type="checkbox" class="form-check-input" name="useyn" id="useyn" value="n">
-	        				</c:otherwise>
-    					</c:choose>
-    					</div>
-					</div>
+						<div class="d-inline-flex">
+							<span class="input-group-text" style="width: 75px; margin-right: 25px; padding-left: 20px;"> 사용 </span>
+							</div><br>
+							<div>
+							<c:choose>
+        						<c:when test='${productVO.useyn=="y"}'>
+          							<input type="checkbox" class="form-check-input" name="useyn" id="useyn" value="y" checked="checked" style="vertical-align: middle;">
+        						</c:when>
+      							<c:otherwise>
+	      							<input type="checkbox" class="form-check-input" name="useyn" id="useyn" value="n">
+		        				</c:otherwise>
+    						</c:choose>
+    						</div>
+    						
+    						<div class="d-inline-flex" style="margin-left: 143px;">
+							<span class="input-group-text" style="width: 75px; margin-right: 25px; padding-left: 20px;">BEST </span>
+							</div><br>
+							<div>
+							<c:choose>
+        						<c:when test='${productVO.bestyn=="y"}'>
+          							<input type="checkbox" class="form-check-input" name="bestyn" id="bestyn" value="y" checked="checked" style="vertical-align: middle;">
+        						</c:when>
+      							<c:otherwise>
+	      							<input type="checkbox" class="form-check-input" name="bestyn" id="bestyn" value="n">
+		        				</c:otherwise>
+    						</c:choose>
+    						</div>
+						</div>
 
 					<div class="input-group">
 						<label class="input-group-text" for="product_image" style="margin-right: 2px;">이미지</label>
@@ -84,7 +98,7 @@ div .input-group {
 					<div class="input-group">
 						<span class="input-group-text text-wrap" style="width: 75px; margin-right: 2px; padding-left: 20px;">상세<br>정보</span>
 						<textarea class="form-control" name="content" id="content" aria-label="상세 정보"  style="height: 400px;" >
-						<c:out value="${productVO.content }" /></textarea>
+<c:out value="${productVO.content }" /></textarea>
 					</div>
 
 					<div class="d-flex justify-content-center" style="margin-bottom: 0;">

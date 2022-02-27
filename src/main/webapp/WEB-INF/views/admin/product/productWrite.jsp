@@ -60,7 +60,7 @@ div .input-group {
 
 					<div class="d-flex justify-content-center" style="margin-bottom: 0;">
 						<input class="btn btn-primary" type="button" value="등록" onClick="go_save()" style="margin-right: 15px;">
-						<input class="btn btn-outline-secondary" type="button" value="취소" onClick="go_mov()">
+						<input class="btn btn-outline-secondary" type="button" value="취소" onClick="go_write_list()">
 					</div>
 				</form>
 			</div>
