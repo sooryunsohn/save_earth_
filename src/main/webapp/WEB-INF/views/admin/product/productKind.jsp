@@ -8,12 +8,12 @@
 			<div class="col-3" style="margin-top: 54px;">
 				<h4 style="margin: 10px 10px 10px 30px;">Category</h4>
 				<ul class="list-group list-group-flush">
-					<li class="list-group-item"><a href="category?kind=''">ALL</a></li>
-					<li class="list-group-item"><a href="category?kind=1">LIVING</a></li>
-					<li class="list-group-item"><a href="category?kind=2">BATHROOM</a></li>
-					<li class="list-group-item"><a href="category?kind=3">KITCHEN</a></li>
-					<li class="list-group-item"><a href="category?kind=4">KIT</a></li>
-					<li class="list-group-item"><a href="category?kind=5">ETC</a></li>
+					<li class="list-group-item"><a href="admin_product_category?kind=''">ALL</a></li>
+					<li class="list-group-item"><a href="admin_product_category?kind=1">LIVING</a></li>
+					<li class="list-group-item"><a href="admin_product_category?kind=2">BATHROOM</a></li>
+					<li class="list-group-item"><a href="admin_product_category?kind=3">KITCHEN</a></li>
+					<li class="list-group-item"><a href="admin_product_category?kind=4">KIT</a></li>
+					<li class="list-group-item"><a href="admin_product_category?kind=5">ETC</a></li>
 				</ul>
 			</div>
 

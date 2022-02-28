@@ -112,7 +112,7 @@ public class AdminController {
 	}
 	
 	// 어드민에서 카테고리별 상품보기
-	@GetMapping(value="/category")
+	@GetMapping(value="/admin_product_category")
 	public String productKindList(ProductVO vo, Model model) {
 		List<ProductVO> listProduct = productService.getProductListByKind(vo);
 		model.addAttribute("adminproductKindList", listProduct);
